@@ -37,7 +37,7 @@ void CounterThread::run() {
             const int end = oldValue + take;
 
             // attempts to add to global count if the value hasn't changed since last read, otherwise retry
-            if (globalCount.compare_exchange_weak(oldValue, oldValue + take)) {
+            if (globalCount.compare_exchange_weak(oldValue, end)) {
                 localCount += take;
 
                 // log history based on end value

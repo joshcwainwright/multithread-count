@@ -57,13 +57,14 @@ int main(int argc, char *argv[]) {
         t->join();
     }
 
-    std::cout << "Final per-thread contribution:\n";
+    std::cout << "\n======= Final per-thread contribution =======\n";
     std::ranges::sort(threads,
                       [](auto *a, auto *b) { return a->threadId() < b->threadId(); });
     for (const auto *t: threads) {
         std::cout << "Thread " << t->threadId()
                 << " final contribution = " << t->contribution() << "\n";
     }
+    std::cout << "=============================================\n\n";
 
     std::cout << "\n=== Commit history in strict global order ===\n";
     printCommitHistoryInOrder();
